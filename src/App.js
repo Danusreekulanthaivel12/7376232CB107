@@ -1,24 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import {
+  AppBar,
+  Toolbar,
+  Button
+} from "@mui/material";
+
+import AllNotifications
+  from "./pages/AllNotifications";
+
+import PriorityNotifications
+  from "./PriorityNotifications";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+
+      <AppBar position="static">
+
+        <Toolbar>
+
+          <Button
+            color="inherit"
+            component={Link}
+            to="/"
+          >
+            All Notifications
+          </Button>
+
+          <Button
+            color="inherit"
+            component={Link}
+            to="/priority"
+          >
+            Priority Inbox
+          </Button>
+
+        </Toolbar>
+
+      </AppBar>
+
+      <Routes>
+
+        <Route
+          path="/"
+          element={<AllNotifications />}
+        />
+
+        <Route
+          path="/priority"
+          element={<PriorityNotifications />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
